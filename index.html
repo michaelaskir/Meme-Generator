@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meme Generator</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+
+<body onload="onInit()">
+
+<header>
+    <h1>Meme Generator</h1>
+     <nav class="main-nav flex">
+            <ul class="clean-list flex">
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Memes</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+</header>
+
+   <section class="gallery ">
+    <img src="img/1.jpg" alt="">
+    <img src="img/2.jpg" alt="">
+    <img src="img/3.jpg" alt="">
+    <img src="img/4.jpg" alt="">
+    <img src="img/5.jpg" alt="">
+    <img src="img/6.jpg" alt="">
+    <img src="img/7.jpg" alt="">
+    <img src="img/8.jpg" alt="">
+    <img src="img/9.jpg" alt="">
+    <img src="img/10.jpg" alt="">
+    <img src="img/11.jpg" alt="">
+    <img src="img/12.jpg" alt="">
+    <img src="img/13.jpg" alt="">
+    <img src="img/14.jpg" alt="">
+    <img src="img/15.jpg" alt="">
+    <img src="img/16.jpg" alt="">
+    <img src="img/17.jpg" alt="">
+    <img src="img/18.jpg" alt="">
+   </section>
+
+   <section class="meme-editor hidden">
+    <canvas class="meme-editor-canvas" width="385" height="375"></canvas>
+   </section>
+
+    <script src="js/services/memeService.js"></script>
+    <script src="js/memeController.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
