@@ -21,24 +21,6 @@
         </nav>
     </header>
     <section class="gallery">
-        <img onclick="renderMeme(1)" src="img/1.jpg" alt="">
-        <img onclick="renderMeme(2)" src="img/2.jpg" alt="">
-        <img onclick="renderMeme(3)" src="img/3.jpg" alt="">
-        <img onclick="renderMeme(4)" src="img/4.jpg" alt="">
-        <img onclick="renderMeme(5)" src="img/5.jpg" alt="">
-        <img onclick="renderMeme(6)" src="img/6.jpg" alt="">
-        <img onclick="renderMeme(7)" src="img/7.jpg" alt="">
-        <img onclick="renderMeme(8)" src="img/8.jpg" alt="">
-        <img onclick="renderMeme(9)" src="img/9.jpg" alt="">
-        <img onclick="renderMeme(10)" src="img/10.jpg" alt="">
-        <img onclick="renderMeme(11)" src="img/11.jpg" alt="">
-        <img onclick="renderMeme(12)" src="img/12.jpg" alt="">
-        <img onclick="renderMeme(13)" src="img/13.jpg" alt="">
-        <img onclick="renderMeme(14)" src="img/14.jpg" alt="">
-        <img onclick="renderMeme(15)" src="img/15.jpg" alt="">
-        <img onclick="renderMeme(16)" src="img/16.jpg" alt="">
-        <img onclick="renderMeme(17)" src="img/17.jpg" alt="">
-        <img onclick="renderMeme(18)" src="img/18.jpg" alt="">
     </section>
 
     <section class="meme-container">
@@ -47,11 +29,18 @@
         </div>
         <div class="meme-editor">
             <input id="txt-input" type="text" placeholder="Enter your text here" oninput="onTextChange(event)" />
+            <input type="color" id="color-picker" value="#ffffff" onchange="onColorChange(event)" />
+
+            <button onclick="onChangeFontSize(5)">A+</button>
+            <button onclick="onChangeFontSize(-5)">A-</button>
+            
+            <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download Image from Canvas</a>
         </div>
     </section>
 
     <script src="js/services/config.js"></script>
     <script src="js/services/memeService.js"></script>
+    <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>
 </body>
 

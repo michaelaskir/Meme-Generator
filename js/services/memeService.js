@@ -30,6 +30,15 @@ function setLineTxt(txt) {
     gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
+function setTextColor(color) {
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+
+function setFontSize(diff) {
+    gMeme.lines[gMeme.selectedLineIdx].size += diff
+}
+
 function setLinePos(x, y) {
     gMeme.lines[gMeme.selectedLineIdx].x = x
     gMeme.lines[gMeme.selectedLineIdx].y = y

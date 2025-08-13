@@ -7,9 +7,10 @@ function onInit() {
     gElCanvas = document.querySelector('canvas')
     gCtx = gElCanvas.getContext('2d')
     resizeCanvas()
+    renderGallery()
 }
 
-function renderMeme(imgId) {
+function onImgSelect(imgId) {
     gMeme.selectedImgId = imgId 
     const imgData = getImgById(imgId)
     const meme = getMeme()
@@ -17,15 +18,28 @@ function renderMeme(imgId) {
     showEditor()
     resizeCanvas()
     
-    renderImg(imgData, meme)
+    renderMeme(imgData, meme)
 }
 function onTextChange(ev) {
     const txt = ev.target.value
     setLineTxt(txt)
-    renderMeme(gMeme.selectedImgId) 
+    onImgSelect(gMeme.selectedImgId) 
 }
 
-function renderImg(imgData,meme) {
+function onColorChange(ev) {
+    const color = ev.target.value
+    setTextColor(color) 
+    onImgSelect(gMeme.selectedImgId) 
+}
+
+function onChangeFontSize(diff) {
+    setFontSize(diff)
+    const meme = getMeme()
+    const imgData = getImgById(meme.selectedImgId)
+    renderMeme(imgData, meme) 
+}
+
+function renderMeme(imgData,meme) {
     const elImg = new Image()
     elImg.src = imgData.url
     elImg.onload = () => {
@@ -36,7 +50,7 @@ function renderImg(imgData,meme) {
 }
 function drawText(line){
      gCtx.font = `${line.size}px ${line.font}`
-    gCtx.fillStyle = line.color
+    gCtx.fillStyle = line.color || 'white'
     gCtx.textAlign = 'center'
     gCtx.fillText(line.txt, gElCanvas.width / 2, gElCanvas.height / 2)
 }
@@ -54,4 +68,9 @@ function showEditor(){
 function showGallery(){
      document.querySelector('.gallery').classList.remove('hidden')
     document.querySelector('.meme-container').classList.add('hidden')
+}
+
+function onDownloadImg(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
 }
