@@ -39,6 +39,17 @@ function setFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].size += diff
 }
 
+function addLine(){
+      gMeme.lines.push({
+            txt: 'enter a text!',
+            size: 40,
+            font: 'Arial',
+            color: 'black',
+            x: 250,
+            y: 50    
+        })
+}
+
 function setLinePos(x, y) {
     gMeme.lines[gMeme.selectedLineIdx].x = x
     gMeme.lines[gMeme.selectedLineIdx].y = y
