@@ -8,14 +8,17 @@ function onInit() {
     gCtx = gElCanvas.getContext('2d')
     resizeCanvas()
     renderGallery()
-
-     document.getElementById('txt-input').value = 'enter a text!'
+    gElCanvas.addEventListener('click', onCanvasClick)
+    document.getElementById('txt-input').value = 'enter a text!'
 }
 
+
+
 function onImgSelect(imgId) {
-    gMeme.selectedImgId = imgId
-    const imgData = getImgById(imgId)
     const meme = getMeme()
+
+    meme.selectedImgId = imgId
+    const imgData = getImgById(imgId)
 
     showEditor()
     resizeCanvas()
@@ -31,12 +34,13 @@ function onTextChange(ev) {
 function onAddLine() {
     addLine()
     gMeme.selectedLineIdx = gMeme.lines.length - 1
-    
+
     fillLineField(gMeme)
 
     const imgData = getImgById(gMeme.selectedImgId)
     renderMeme(imgData, gMeme)
 }
+
 function onSwitchLine() {
     const meme = getMeme()
 
@@ -63,6 +67,7 @@ function onChangeFontSize(diff) {
     const imgData = getImgById(meme.selectedImgId)
     renderMeme(imgData, meme)
 }
+
 function renderMeme(imgData, meme) {
     const elImg = new Image()
     elImg.src = imgData.url
@@ -71,15 +76,23 @@ function renderMeme(imgData, meme) {
         gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 
         meme.lines.forEach((line, idx) => {
+            gCtx.font = `${line.size}px ${line.font}`
+            const textWidth = gCtx.measureText(line.txt).width
+            const textHeight = line.size
+
+            line.width = textWidth
+            line.height = textHeight
+
             drawText(line)
-            if (idx === meme.selectedLineIdx) {
-                drawFrame(line)
-            }
+            if (idx === meme.selectedLineIdx) drawFrame(line)
         })
     }
 }
 
 function drawText(line) {
+    const meme = getMeme()
+    const {selectedLineIdx} = meme
+
     gCtx.font = `${line.size}px ${line.font}`
     gCtx.fillStyle = line.color || 'white'
     gCtx.textAlign = 'center'
@@ -88,7 +101,7 @@ function drawText(line) {
 }
 
 function drawFrame(line) {
-    gCtx.strokeStyle = 'red'
+    gCtx.strokeStyle = 'black'
     gCtx.lineWidth = 2
 
     const textWidth = gCtx.measureText(line.txt).width
@@ -101,6 +114,24 @@ function drawFrame(line) {
     )
 }
 
+function onCanvasClick(ev) {
+    const { offsetX, offsetY } = ev
+    const meme = getMeme()
+
+    meme.lines.forEach((line, idx) => {
+        const left = line.x - line.width / 2 - 5
+        const right = line.x + line.width / 2 + 5
+        const top = line.y - line.height / 2 - 5
+        const bottom = line.y + line.height / 2 + 5
+
+        if (offsetX >= left && offsetX <= right && offsetY >= top && offsetY <= bottom) {
+            meme.selectedLineIdx = idx
+            fillLineField(meme)
+            const imgData = getImgById(meme.selectedImgId)
+            renderMeme(imgData, meme)
+        }
+    })
+}
 function fillLineField(meme) {
     const currLine = meme.lines[meme.selectedLineIdx]
     document.getElementById('txt-input').value = currLine.txt

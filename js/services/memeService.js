@@ -8,10 +8,14 @@ var gMeme = {
         {
             txt: 'enter a text!',
             size: 40,
-            font: 'Arial',
-            color: 'black',
+            font: 'Impact',
+            color: 'white',
+            strokeColor: 'black',
             x: 250,
-            y: 50    
+            y: 100,
+            width: 200,    
+            height: 40,
+            align: 'center',
         }
     ]
 }
@@ -39,15 +43,19 @@ function setFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].size += diff
 }
 
-function addLine(){
-      gMeme.lines.push({
-            txt: 'enter a text!',
+function addLine() {
+    gMeme.lines.push({
+           txt: 'enter a text!',
             size: 40,
-            font: 'Arial',
-            color: 'black',
+            font: 'Impact',
+            color: 'white',
+            strokeColor: 'black',
             x: 250,
-            y: 50    
-        })
+            y: 100,
+            width: 200,    
+            height: 40,
+            align: 'center',
+    })
 }
 
 function setLinePos(x, y) {
