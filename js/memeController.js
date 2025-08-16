@@ -13,8 +13,6 @@ function onInit() {
     document.getElementById('txt-input').value = 'enter a text!'
 }
 
-
-
 function onImgSelect(imgId) {
     resetMeme(imgId)
 

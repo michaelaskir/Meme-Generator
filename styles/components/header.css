@@ -1,0 +1,57 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em 1em;
+    background-color: rgb(90, 187, 166);
+}
+
+.menu-btn {
+    font-size: 2em;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    z-index: 3; 
+}
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    right: -250px;
+    width: 250px;
+    height: 100vh;
+    background-color: rgb(90, 187, 166);
+    padding-top: 3em;
+    transition: right 0.3s ease;
+    z-index: 2;
+}
+
+
+.main-nav.open {
+    right: 0;     
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.close-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 4;
+}
+
+.main-nav.open .close-btn {
+    display: block;
+}

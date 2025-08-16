@@ -1,0 +1,23 @@
+.flex {
+    display: flex;
+    align-items: center;
+}
+
+.clean-list {
+    display: flex;
+    gap: 1em;
+    margin-inline-end: 2em;
+    padding: 0;
+    list-style: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+

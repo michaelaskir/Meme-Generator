@@ -1,0 +1,28 @@
+@media (min-width: 600px) {
+    .menu-btn {
+        display: none;
+    }
+
+    .main-nav {
+        position: static;
+        width: auto;
+        height: auto;
+        background: none;
+        padding: 0;
+    }
+
+    .main-nav ul {
+        flex-direction: row;
+        gap: 1em;
+    }
+}
+
+@media (min-width: 1000px) {
+    .meme-container {
+        flex-direction: row;
+        place-items: center;
+    }
+}
+.hidden { 
+  display: none;
+}

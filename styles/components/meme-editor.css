@@ -1,0 +1,10 @@
+.meme-editor {
+    grid-column: 2;
+    background-color: rgb(175, 175, 175);
+    border-radius: 10px;
+
+margin: 10vh auto;
+
+    width: 40vw;
+    height: 70%;
+}

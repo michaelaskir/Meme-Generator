@@ -1,0 +1,9 @@
+.canvas-container {
+    margin: 10px auto;
+
+}
+
+canvas {
+    outline: 3px solid rgb(188, 186, 190);
+    border-radius: 5px;
+}
