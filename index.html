@@ -12,7 +12,9 @@
 
     <header>
         <h2>Meme Generator</h2>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
         <nav class="main-nav flex">
+            <button class="close-btn" onclick="closeMenu()"></button>
             <ul class="clean-list flex">
                 <li><a onclick="showGallery()" href="#">gallery</a></li>
                 <li><a href="#">Memes</a></li>
@@ -23,22 +25,39 @@
     <section class="gallery">
     </section>
 
-    <section class="meme-container">
+    <section class="meme-container hidden">
         <div class="canvas-container">
-            <canvas class="meme-canvas" width="385" height="375"></canvas>
+            <canvas class="meme-canvas" width="500" height="500"></canvas>
         </div>
         <div class="meme-editor">
-            <input id="txt-input" type="text" placeholder="Enter your text here" oninput="onTextChange(event)" />
-            <input type="color" id="color-picker" value="#ffffff" onchange="onColorChange(event)" />
+            <div class="meme-editor">
+                <input id="txt-input" type="text" placeholder="Enter your text here" oninput="onTextChange(event)" />
 
-            <button onclick="onChangeFontSize(5)">A+</button>
-            <button onclick="onChangeFontSize(-5)">A-</button>
+                <select id="font-family" onchange="onFontChange(event)">
+                    <option value="Impact">Impact</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Comic Sans MS">Comic Sans</option>
+                    <option value="Verdana">Verdana</option>
+                </select>
 
-            <button onclick="onAddLine()">Add line</button>
-            <button onclick="onSwitchLine()">Switch Line</button>
+                <button onclick="onChangeFontSize(5)">A+</button>
+                <button onclick="onChangeFontSize(-5)">A-</button>
 
-            <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download Image from Canvas</a>
-        </div>
+                <button onclick="onTextAlign('left')">Left</button>
+                <button onclick="onTextAlign('center')">Center</button>
+                <button onclick="onTextAlign('right')">Right</button>
+
+                <button onclick="onMoveText(-5)">↑</button>
+                <button onclick="onMoveText(5)">↓</button>
+
+                <button onclick="onAddLine()">Add line</button>
+                <button onclick="onSwitchLine()">Switch Line</button>
+                <button onclick="onDeleteLine()">Delete Line</button>
+
+                <input type="color" id="color-picker" value="#ffffff" onchange="onColorChange(event)" />
+                <a href="#" class="btn" onclick="onDownloadImg(this)" download="my-img.jpg">Download Image from
+                    Canvas</a>
+            </div>
     </section>
 
     <script src="js/services/config.js"></script>

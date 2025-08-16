@@ -13,7 +13,7 @@ var gMeme = {
             strokeColor: 'black',
             x: 250,
             y: 100,
-            width: 200,    
+            width: 200,
             height: 40,
             align: 'center',
         }
@@ -43,18 +43,55 @@ function setFontSize(diff) {
     gMeme.lines[gMeme.selectedLineIdx].size += diff
 }
 
-function addLine() {
-    gMeme.lines.push({
-           txt: 'enter a text!',
+function setFontFamily(font) {
+    gMeme.lines[gMeme.selectedLineIdx].font = font
+}
+
+function setTextAlign(align) {
+    gMeme.lines[gMeme.selectedLineIdx].align = align
+}
+
+function moveTextLine(offset) {
+    gMeme.lines[gMeme.selectedLineIdx].y += offset
+}
+
+function deleteLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+}
+
+function resetMeme(imgId) {
+    gMeme = {
+        selectedImgId: imgId,
+        selectedLineIdx: 0,
+        lines: [{
+            txt: 'enter a text!',
             size: 40,
             font: 'Impact',
             color: 'white',
             strokeColor: 'black',
-            x: 250,
-            y: 100,
-            width: 200,    
+            x: gElCanvas.width / 2,
+            y: 50,
+            width: 200,
             height: 40,
             align: 'center',
+        }]
+    };
+}
+
+
+function addLine() {
+    gMeme.lines.push({
+        txt: 'enter a text!',
+        size: 40,
+        font: 'Impact',
+        color: 'white',
+        strokeColor: 'black',
+        x: 250,
+        y: 100,
+        width: 200,
+        height: 40,
+        align: 'center',
     })
 }
 
